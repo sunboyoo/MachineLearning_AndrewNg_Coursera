@@ -11,6 +11,10 @@ function [error_train, error_val] = learningCurve(X, y, Xval, yval, lambda)
 % dataset sizes from 1 up to m. In practice, when working with larger
 % datasets, you might want to do this in larger intervals.
 
+% X(m,n+1) already contains bias term ones(m,1)
+% Xval(mval,n+1) already contains bias term ones(mval,1)
+
+
 % Number of training examples
 m = size(X,1);
 
