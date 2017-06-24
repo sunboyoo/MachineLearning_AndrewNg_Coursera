@@ -5,6 +5,8 @@ function [J, grad] = linearRegCostFunction (X, y, theta, lambda)
 % cost of using theta as the parameter for linear regression to fit the 
 % data points in X and y. Returns the cost in J and the gradient in grad
 
+% X already contains bias term zeros.
+
 % Initialize some useful values
 m = length(y); % number of training examples
 
@@ -24,26 +26,23 @@ grad = zeros(size(theta));
 m = size(X,1);
 n = size(X,2);
 h = zeros(size(y));
+J_Regularization = 0;
+grad_Regularization = zeros(size(theta));
 
 % -----compute cost --------
-
-% Add bias terms to the features of training examples
-X_bias = [ones(m,1) X];
-h = X_bias * theta; % vector
+% X already contains the bais term zeros.
+h = X * theta; % vector
 error = h - y;  % vector
 theta_remove_bias = theta(:,2:end);
-J = 1/2/m * sum(sum( error .^ 2)) + lambda/2/m * sum(sum(theta_remove_bias .^2 ));
-
-%-----compute cost end ---------
-
-
+J = 1/2/m * sum(sum( error .^ 2)) ;
+J_Regularization = lambda/2/m * sum(sum(theta_remove_bias .^2 ));
+J = J + J_Regularization;
 
 %-----compute grad-------
-
-
-
-
-%-----compute grad end---
+grad = 1/m * X' * error; % (n+1,m)x(m,1) = (n+1,1)
+grad_Regularization = lambda / m * theta; %(n+1,1)
+grad_Regularization(1) = 0;
+grad = grad + grad_Regularization;
 
 %=========================================
 grad = grad(:);
