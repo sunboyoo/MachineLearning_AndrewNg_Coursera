@@ -10,7 +10,7 @@ m_cv = size(Xval,1);
 num_RandomSelection = 50;
 
 error_train = zeros(m_train,1);
-error_val = zeros(m_cv,1);
+error_val = zeros(m_train,1); % I made a mistake by defining error_val = zeros(m_cv,1)
 
 for i = 1:m_train
     for j = 1:num_RandomSelection
@@ -22,7 +22,7 @@ for i = 1:m_train
         
         theta = trainLinearReg(X_RandomI,y_RandomI,lambda);
         [J_train, grad] = linearRegCostFunction(X_RandomI,y_RandomI,theta,0);
-        [J_cv, grad] = linearRegCostFunction(Xval_RandomI,y_RandomI,theta,0);
+        [J_cv, grad] = linearRegCostFunction(Xval_RandomI,yval_RandomI,theta,0);
         error_train(i) = error_train(i) + J_train / num_RandomSelection;
         error_val(i) = error_val(i) + J_cv / num_RandomSelection;
      end
