@@ -5,6 +5,22 @@ function [error_train, error_val] = learningCurveRandomSelection(X, y, Xval, yva
 % error_train(i) & error_val(i) - the error of training with randomly selected i examples
 % Please note m_cv >= m_train
 
+% Optional (ungraded) exercise: Plotting learning
+% curves with randomly selected examples
+% In practice, especially for small training sets, when you plot learning curves
+% to debug your algorithms, it is often helpful to average across multiple sets
+% of randomly selected examples to determine the training error and cross
+% validation error.
+% Concretely, to determine the training error and cross validation error for
+% i examples, you should first randomly select i examples from the training set
+% and i examples from the cross validation set. You will then learn the param-
+% eters theta using the randomly chosen training set and evaluate the parameters
+% theta on the randomly chosen training set and cross validation set. The above
+% steps should then be repeated multiple times (say 50) and the averaged error
+% should be used to determine the training error and cross validation error for
+% i examples.
+
+
 m_train = size(X,1);
 m_cv = size(Xval,1);
 num_RandomSelection = 50;
@@ -28,7 +44,7 @@ for i = 1:m_train
      end
 end
 
-
+% Visualization
 close all;
 plot(1:m_train, error_train, 1:m_train, error_val);
 title(sprintf('Polynomial Regression Learning Curve (lambda = %f)', lambda));
