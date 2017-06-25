@@ -10,13 +10,11 @@ function [error_train, error_val] = polynomialDegreeSelection(X,y,Xval,yval,d_ma
 % PENDING: should lambda be used for polynomial degree selection? I believe yes. However, I believe the best
 %           practice is to use a set of lambda
 
-% Initialize some useful values
-% lambda = 3 was selected on programming exercise 5, it should change for new cases.
+
 % 20th degree polynomials are unrealistic. You run out of precision in the floating point format pretty easily
 % when you are raising a value to the 8th power, let alone 20th power.
-
-d_max = 10; 
-lambda = 3; 
+% suggest use d_max = 10; 
+% suggest use lambda = 3 for programming exercise 5, it should change for new cases.
 
 % Step 1 > working on polynomial in d degree
 % Step 2 > train the model with training dataset to find the parameter theta
