@@ -5,7 +5,7 @@ function [J, grad] = linearRegCostFunction (X, y, theta, lambda)
 % cost of using theta as the parameter for linear regression to fit the 
 % data points in X and y. Returns the cost in J and the gradient in grad
 
-% X(m,n+1) already contains bias term zeros.
+% X(m,n+1) already contains bias term ones.
 % y(m,1) vector
 % theta(n+1,1) vector
 % lambda is a real number
