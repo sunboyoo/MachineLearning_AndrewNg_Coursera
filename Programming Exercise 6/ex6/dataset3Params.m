@@ -32,16 +32,27 @@ for i = 1:size(C_vec)
     end
 end
 
+[minval, row] = min(min(error_val,[],2));
+[minval, col] = min(min(error_val,[],1));
+C = C_vec(row);
+sigma = sigma_vec(col);
+
 % ==== Another way to find the minimum row and colomn===========
+%
+% for i = 1:size(C_vec)
+%    for j = 1:size(sigma_vec)
+%        error_val(i, j) = ...
+%        mean(double(svmPredict(svmTrain(X, ...
+%                                        y, ...
+%                                        C_vec(i), ...
+%                                        @(x1, x2) gaussianKernel(x1, x2, sigma_vec(j))), ...
+%                                       Xval) ~= yval));
 % [CIndex, sigmaIndex] = find(error_val == min(min(error_val)));
 % C = C_vec(CIndex);
 % sigma = sigma_vec(sigmaIndex);
 %==============================================================
 
-[minval, row] = min(min(error_val,[],2));
-[minval, col] = min(min(error_val,[],1));
-C = C_vec(row);
-sigma = sigma_vec(col);
+
 
 ================
 end
