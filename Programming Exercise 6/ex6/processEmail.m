@@ -4,6 +4,11 @@ function word_indices = processEmail(email_contents)
 % returns a list of indices of the words contained in the email.
 
 % Load Vocabulary
-vocabList = getVocabList();
+vocabList = getVocabList(); % cell(1899,1)
+
+% Initialize return value
+word_indices = [];
+
+%
 
 
