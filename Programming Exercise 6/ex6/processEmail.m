@@ -79,14 +79,14 @@ email_contents = lower(email_contents);
         % Note: you can use strcmp(str1, str2) to compare two strings(str1 and str2).
         % It will return 1 only if the two strings are equivalent.
         
+        for i = 1: size(vocabList,1)
+            if strcmp(str, vocabList{i}) == 1
+                 word_indices = [word_indices; i];
+                 break;
+             end
+        end                              
         
-        
-        
-        
-        
-        
-        
-        
+                       
         %=========================================================================
            
         % Print to screen, ensuring that the output lines are not too long
