@@ -34,4 +34,10 @@
 %   z_kx1(j)    = (U_reduced_nk(:,j))' * x_nx1; % For Element Computation
 % ==========================================
   
+% Reconstruction from compressed data
+% Z(m,k) ==>> X_approx(m,n) == X(m,n)
+% z(k,1) ==>> x_approx(n,1) == x(n,1)
 
+
+% x_approx_nx1 = U_reduced_nk * z_kx1;   % For Vector Computation 
+% X_approx_mn = Z_mk * U_reduced_nk';    % For Matrix Computation
