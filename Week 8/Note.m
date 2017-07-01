@@ -49,7 +49,10 @@
 % X_approx_mn = Z_mk * U_reduced_nk';    % For Matrix Computation
 
 % (3) 
-% Check 1 - ( sum_i=1:k(S(i,i)) / sum_i=1:n(S(i,i)) ) < 0.01
+% [U,S_nn,V] = svd(Sigma);
+% Pick the smallest k
+% Check 1 - ( sum_i=1:k(S(i,i)) / sum_i=1:n(S(i,i)) ) <= 0.01
+% or Check  sum_i=1:k(S(i,i)) / sum_i=1:n(S(i,i)) >= 0.99
 % 99% of variance is retained
 
 
