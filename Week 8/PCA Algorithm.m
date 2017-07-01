@@ -9,7 +9,7 @@
 % X(m,n) ==>> Z(m,k)
 % x(n,1) ==>> z(k,1)
 
-% DATA PREPARATION - Mean Normalization and Feature Scaling
+% DATA PREPARATION - Mean Normalization (MUST) and Feature Scaling(OPTIONAL)
 % X = (X - mean) / std;
 
 % ========================================================================
