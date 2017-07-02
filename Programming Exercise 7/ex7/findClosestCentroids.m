@@ -32,4 +32,7 @@ for i = 1:m
     [minval, idx(i)] = min(distance);
 end
 
+
+
+
 end
