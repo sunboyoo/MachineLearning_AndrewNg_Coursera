@@ -26,13 +26,22 @@ idx = zeros(m, 1);
 % X - matrix(m,n)
 % centroids - (k,n)
 
-distance = zeros(K,1);
-for i = 1:m
-    distance = sum( (centroids - X(i,:)).^2, 2 );
-    [minval, idx(i)] = min(distance);
-end
 
+% ====== For Loop Method ======
+% distance = zeros(K,1);
+% for i = 1:m
+%     distance = sum( (centroids - X(i,:)).^2, 2 );
+%     [minval, idx(i)] = min(distance);
+% end
+% ============
 
+% ====== Vectorized Method ======
+t1 = permute(centroids,[3 2 1]);    % (k,n,1) ==>> (1,n,k)
+t2 = bsxfun(@minus, X, t1);         % (m,n,1) - (1,n,k) ==>> (m,n,k)
+t3 = t2 .^ 2;                       % (m,n,k)
+t4 = sum(t3, 2);                     % (m,1,k)
+[minval idx] = min(t4,[],3);        % idx(m,1) minval(m,1)
+% ======
 
 
 end
