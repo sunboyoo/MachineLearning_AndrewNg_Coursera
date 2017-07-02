@@ -41,7 +41,15 @@ t2 = bsxfun(@minus, X, t1);         % (m,n,1) - (1,n,k) ==>> (m,n,k)
 t3 = t2 .^ 2;                       % (m,n,k)
 t4 = sum(t3, 2);                     % (m,1,k)
 [minval idx] = min(t4,[],3);        % idx(m,1) minval(m,1)
+
+%%// t1 = permute(centroids,[3 2 1]);    % (k,n,1) ==>> (1,n,k)
+%%// Spread out centroids to the third dimension so that the singleton
+%%// second dimension thus created could be used with bsxfun for expansion in
+%%// that dimension
+
+%%// [minval idx] = min(t4,[],3);        % idx(m,1) minval(m,1)
+%%// Since the expansion resulted in data in third dimension, min-finding
+%%// must be along it
+
 % ======
-
-
 end
