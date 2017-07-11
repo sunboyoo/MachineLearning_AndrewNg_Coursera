@@ -22,7 +22,7 @@ if ( size(sigma2,1) == 1) || (size(sigma2,2) == 1)
 end
 
 t1 = bsxfun(@minus, X, mu');    % (m,n) - (1,n) = (m,n)
-t2 = t1 * pinv(sigma2) * t1 *(-1/2);    % (n,m)x(n,n)x(m,n) = (m,n)
+t2 = bsxfun(@times,t1*pinv(sigma2), t1)*(-1/2);    % (m,n)x(n,n) .* (m,n) = (m,n)
 t3 = sum(t2,2);                 % (m,n) -> (m,1)
 p = (2*pi)^(-n/2))*(det(sigma2)^(-1/2)) .* exp(t3);  %(m,1)
 
