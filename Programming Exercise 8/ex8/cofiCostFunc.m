@@ -46,23 +46,8 @@ J = error_Squared + regularization_Theta + regularization_X;
 
 
 % ==== Compute the Gradient grad =====
-
-for i = 1:num_movies
-      idx = find(R(i,:)==1);
-      t1 = Theta(idx,:);     % (n_rated_users, n)
-      t2 = Y(i,idx);         % (1, n_rated_users)
-      X_grad(i,:) = (X(i,:)*t1' - t2) * t1;   %(1,n)
-end
-
-for j = 1:num_users
-      idx = find(R(:,j)==1);
-      t1 = X(idx,:);       %(n_rated_movies, n)
-      t2 = Y(idx,j);       %(n_rated_movies,1)
-      Theta_grad(j,:) = ((Theta(j,:)*t1' - t2') * t1)';
-end
-
-
-
+Theta_grad = error' * X; % (n_movie, n_user)' * (n_movie, n);
+X_grad = error * Theta; % (n_movie, n_user) * (n_user, n);
 
 Theta_grad_regularization = lambda * Theta;  %(n_user, n)
 X_grad_regularization     = lambda * X;      %(n_movie, n)
